@@ -1,5 +1,5 @@
-export class login{
+export class Login{
 
-  /*correo : string;
-  contraseña : string;*/
+  correo !: string;
+  password !: string;
 }
