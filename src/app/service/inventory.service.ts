@@ -12,7 +12,7 @@ const inventorUrl = environment.inventory;
 export class InventoryService {
 
   constructor(private http: HttpClient) { }
-  public getClient(documentType: string, documentNumber: string): Observable<Object> {
+  public getInventory(documentType: string, documentNumber: string): Observable<Object> {
 
       let params = {
           "documentType": documentType,
@@ -23,7 +23,7 @@ export class InventoryService {
   }
 
   
-  public saveClient(client: Inventory): Observable<Object> {
+  public saveInventory(client: Inventory): Observable<Object> {
 
     return this.http.post(`${inventorUrl}`, client, { observe: 'response' });
 
