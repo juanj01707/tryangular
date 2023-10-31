@@ -11,7 +11,7 @@ body{
 
 .form-logup{
   width: 400px;
-  height: 475px;
+  height: auto;
   background: #636161;
   margin: auto;
   margin-top: 80px;
@@ -32,6 +32,16 @@ body{
 
 }
 
+
+
+.form-logup h6{
+  margin: auto;
+  text-align: left;
+  height: 20px;
+
+  font-size: 15px;
+}
+
 .controls {
   width: 100%;
   border: 1px solid #017bab;
@@ -41,6 +51,17 @@ body{
   font-size: 14px;
   font-weight: bold;
 
+}
+
+#miLista{
+  width: 100%;
+  color: #636161;
+  border: 1px solid #017bab;
+  margin-bottom: 15px;
+  padding: 11px 10px;
+  background: white;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .buttons {

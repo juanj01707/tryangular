@@ -4,5 +4,6 @@
         "Ingresar",
         "Olvidaste",
         "Usuario"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
