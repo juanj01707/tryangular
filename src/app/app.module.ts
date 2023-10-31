@@ -3,11 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterLinkActive } from '@angular/router';
 import { AppComponent } from './app.component';
+
 import { LoginComponent } from './login/login.component';
+
 import { RegisterComponent } from './register/register.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { HttpClientModule } from '@angular/common/http';
 import {  AppRoutingModule} from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import {  AppRoutingModule} from './app-routing.module';
     HttpClientModule,
     RouterLinkActive,
     AppRoutingModule,
+    FormsModule
   ],
   exports: [InventoryComponent],
   providers: [
