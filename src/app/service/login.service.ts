@@ -12,14 +12,10 @@ const loginUrl = environment.login;
 export class LoginService {
 
   constructor(private http: HttpClient) { }
-  public autenthicate(correo: string, password: string): Observable<Object> {
+  public authenticate(loginmodel: Login): Observable<Object> {
 
-    let params = {
-        "documentType": correo,
-        "documentNumber": password,
-    };
 
-    return this.http.get(`${loginUrl}`, { params, observe: 'response' });
+    return this.http.post(`${loginUrl}`, loginmodel,{ observe: 'response' });
 }
 
 }

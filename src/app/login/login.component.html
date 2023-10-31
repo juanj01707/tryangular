@@ -11,9 +11,14 @@
 <body>
   <section class="form-login">
     <h5>Log In</h5>
-    <input class="controls" type="text" name="usuario" value="" placeholder="Usuario">
-    <input class="controls" type="text" name="Contraseña" value="" placeholder="Contraseña">
-    <input class="buttons" type="submit" name="" value="Ingresar">
+    <form>
+      <input class="controls" type="text" name="correo" [(ngModel)]="loginModel.correo" placeholder="Correo">
+      <input class="controls" type="password" name="password" [(ngModel)]="loginModel.password" placeholder="Contraseña">
+      <input class="buttons" type="button" value="Ingresar" (click)="ingresar()">
+    </form>
+
+    <p *ngIf="loginMessageSuccess" class="success-message">{{ loginMessageSuccess }}</p>
+
     <p><a href="#">¿Olvidaste tu contraseña?</a></p>
     <p><a [routerLink]="['/register']">Registrar</a></p>
   </section>
