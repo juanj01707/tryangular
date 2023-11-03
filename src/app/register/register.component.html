@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/src/app/register/register.component.css">
+  <script src="/src/app/register/register.component.ts"></script>
   <title>Register</title>
 </head>
 <body>
@@ -19,14 +19,15 @@
     <select id="miLista">
         <option value="opcion0" disabled selected>Selecciona una opción</option>
         <option value="1">Cedula de ciudadania</option>
-        <option value="opcion2">Tarjeta de identidad</option>
-        <option value="opcion3">Cedula extrangera</option>
+        <option value="2">Tarjeta de identidad</option>
+        <option value="3">Pasaporte</option>
     </select>
 
     <label for="miLista">Estado colaborador</label>
     <select id="miLista">
         <option value="opcion0" disabled selected>Selecciona una opción</option>
-        <option value="opcion1">contratado</option>
+        <option value="opcion1">Contratado</option>
+        <option value="opcion1">Despedido</option>
 
 
     </select>
@@ -54,7 +55,7 @@
     <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="">
     <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
     <input class="buttons" type="submit" value="Registrar">
-    <p><a href="/src/app/login/login.component.html">¿Ya tengo Cuenta?</a></p>
+    <p><a [routerLink]="['/login']">¿Ya tengo Cuenta?</a></p>
 </section>
 
 </body>

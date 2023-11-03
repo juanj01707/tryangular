@@ -8,7 +8,6 @@ const ADMIN_ROUTES: Routes = [
   { path: '', component: RegisterComponent }
 ];
 
-
 @NgModule({
   declarations: [],
   imports: [
