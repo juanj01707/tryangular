@@ -25,28 +25,16 @@ export class InventoryService {
   
   public saveInventory(client: Inventory): Observable<Object> {
 
+    // para usar el token generado en login y poder consumir la api
+    //hay que mandar el header con el getCookies
+    //busque en google http client add header angular
+    /*
+     let headers = new HttpHeaders();
+     headers = headers.set('Content-Type', aqui poner el getCokkie; charset=utf-8');
+
+    */
     return this.http.post(`${inventorUrl}`, client, { observe: 'response' });
 
 }
-/*
-public updateClient(clientId: string, client:Inventory): Observable<Object> {
-
-    let params = {
-        "clientId": clientId
-    }
-    return this.http.put(`${inventorUrl}`, client , { params, observe: 'response' });
-
-}
-
-public deleteClient(clientId: string): Observable<any> {
-
-    let params = {
-        "clientId": clientId
-    }
-
-    return this.http.delete(`${inventorUrl}`, { params, observe: 'response' });
-
-}
-*/
 
 }
