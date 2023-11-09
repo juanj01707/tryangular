@@ -16,8 +16,7 @@
         <label for="identificacion">Identificacion</label>
         <input class="controls" type="text" name="identificacion" [(ngModel)]="registerModel.identificacion" id="identificacion" placeholder="">
   
-        <label for="tipoIdentificacion">Tipo de identificación:</label>
-        <select id="tipoIdentificacion" name="codigotipoidentificacion" [(ngModel)]="registerModel.codigotipoidentificacion">
+        <select id="tipoIdentificacion" name="codigotipoidentificacion" [(ngModel)]="registerModel.codigotipoidentificacion.codigotipoidentificacion">
           <option value="0" disabled>Seleccione una opción</option>
           <option value="1">Cedula de ciudadanía</option>
           <option value="2">Tarjeta de identidad</option>
@@ -26,30 +25,30 @@
 
 
         <label for="estadoColaborador">Estado colaborador</label>
-        <select id="estadoColaborador" name="codigoestadocolaborador">
+        <select id="estadoColaborador" name="codigoestadocolaborador" [(ngModel)]="registerModel.codigoestadocolaborador.codigoestadocolaborador">
           <option value="1">Contratado</option>
           <option value="2">Despedido</option>
         </select>
   
         <label for="tipoColaborador">Tipo de colaborador:</label>
-        <select id="tipoColaborador" name="codigotipocolaborador">
+        <select id="tipoColaborador" name="codigotipocolaborador" [(ngModel)]="registerModel.codigotipocolaborador.codigotipocolaborador">
           <option value="1">carpintero</option>
           <option value="2">vendedor</option>
           <option value="3">administrador</option>
         </select>
   
         <label for="sede">Sede:</label>
-        <select id="sede" name="codigosede">
+        <select id="sede" name="codigosede" [(ngModel)]="registerModel.codigosede.codigosede">
           <option value="1">Sede Rionegro</option>
           <option value="2">Sede Carmen</option>
           <option value="3">Sede Santuario</option>
         </select>
   
         <label for="correo">Correo</label>
-        <input class="controls" type="email" name="correo" id="correo" placeholder="">
+        <input class="controls" type="email" name="correo" [(ngModel)]="registerModel.correo" id="correo" placeholder="">
 
         <label for="contraseña">Password</label>
-        <input class="controls" type="password" name="password" id="contraseña" placeholder="">
+        <input class="controls" type="password" name="password" [(ngModel)]="registerModel.password" id="contraseña" placeholder="">
 
         <p>Estoy de acuerdo con <a href="#">Términos y Condiciones</a></p>
 

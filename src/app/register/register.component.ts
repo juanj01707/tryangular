@@ -10,7 +10,6 @@ import { Codigociudad } from './model/codigociudad';
 import { Codigodepartamento } from './model/codigodepartamento';
 import { Codigopais } from './model/codigopais';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -19,13 +18,11 @@ import { Codigopais } from './model/codigopais';
 
 export class RegisterComponent {
 
+  registerModel: Register = new Register();
 
-  registerModel: Register= new Register();
-  loginMessageSuccess: string = '';
-  
   // Agrega propiedades para los elementos select
   tipoIdentificacionOptions: any[] = [
-    { value: 0, label: 'Seleccione una opcion' },
+    { value: 0, label: 'Seleccione una opción' },
     { value: 1, label: 'Cedula de ciudadanía' },
     { value: 2, label: 'Tarjeta de identidad' },
     { value: 3, label: 'Pasaporte' },
@@ -48,90 +45,61 @@ export class RegisterComponent {
     { value: 3, label: 'Sede Santuario' },
   ];
 
-  constructor(private authService : RegisterService){
-    this.registerModel.codigotipoidentificacion = new Codigotipoidentificacion();
-    this.registerModel.codigoestadocolaborador = new Codigoestadocolaborador();
-    this.registerModel.codigotipocolaborador = new Codigotipocolaborador();
-    this.registerModel.codigosede = new Codigosede();
-    this.registerModel.codigosede.codigoempresa = new Codigoempresa();
-    this.registerModel.codigosede.codigociudad = new Codigociudad();
-    this.registerModel.codigosede.codigociudad.codigodepartamento = new Codigodepartamento();
-    this.registerModel.codigosede.codigociudad.codigodepartamento.codigopais = new Codigopais();
-  }
-
-  submitForm(event: Event): void{
-    event.preventDefault();
-
-    //Construir objeto JSON
-    const formData = {
-      nombre: this.registerModel.nombre,
-      identificacion: this.registerModel.identificacion,
-
-
-      codigotipoidentificacion: {
-        codigotipoidentificacion: this.registerModel.codigotipoidentificacion.codigotipoidentificacion,
-        nombre: this.registerModel.codigotipoidentificacion.nombre,
+  constructor(private authService: RegisterService) {
+    // Inicializa las propiedades del modelo con valores predeterminados
+    this.registerModel.codigotipoidentificacion = {
+      codigotipoidentificacion: 0,
+      nombre: '',
+    };
+    this.registerModel.codigoestadocolaborador = {
+      codigoestadocolaborador: 0,
+      nombre: '',
+    };
+    this.registerModel.codigotipocolaborador = {
+      codigotipocolaborador: 0,
+      nombre: '',
+      salario: 0,
+      funcion: '',
+    };
+    this.registerModel.codigosede = {
+      codigosede: 0,
+      nombre: '',
+      codigoempresa: {
+        codigoempresa: 0,
+        nombre: '',
+        nit: '',
       },
-
-
-      codigoestadocolaborador: {
-        codigoestadocolaborador: this.registerModel.codigoestadocolaborador.codigoestadocolaborador,
-        nombre: this.registerModel.codigoestadocolaborador.nombre,
-      },
-
-
-      codigotipocolaborador: {
-        codigotipocolaborador: this.registerModel.codigotipocolaborador.codigotipocolaborador,
-        nombre: this.registerModel.codigotipocolaborador.nombre,
-        salario: this.registerModel.codigotipocolaborador.salario,
-        funcion: this.registerModel.codigotipocolaborador.funcion,
-      },
-
-
-      codigosede: {
-        codigosede: this.registerModel.codigosede.codigosede,
-        nombre: this.registerModel.codigosede.nombre,
-        codigoempresa: {
-          codigoempresa: this.registerModel.codigosede.codigoempresa.codigoempresa,
-          nombre: this.registerModel.codigosede.codigoempresa.nombre,
-          nit: this.registerModel.codigosede.codigoempresa.nit,
-        },
-        codigociudad: {
-          codigociudad: this.registerModel.codigosede.codigociudad.codigociudad,
-          nombre: this.registerModel.codigosede.codigociudad.nombre,
-          codigodepartamento: {
-            codigodepartamento: this.registerModel.codigosede.codigociudad.codigodepartamento.codigodepartamento,
-            nombre: this.registerModel.codigosede.codigociudad.codigodepartamento.nombre,
-            codigopais: {
-              codigopais: this.registerModel.codigosede.codigociudad.codigodepartamento.codigopais.codigopais,
-              nombre: this.registerModel.codigosede.codigociudad.codigodepartamento.codigopais.nombre,
-            },
+      codigociudad: {
+        codigociudad: 0,
+        nombre: '',
+        codigodepartamento: {
+          codigodepartamento: 0,
+          nombre: '',
+          codigopais: {
+            codigopais: 0,
+            nombre: '',
           },
         },
       },
+    };
+  }
 
+  submitForm(event: Event): void {
+    event.preventDefault();
 
-
-
+    const formData = {
+      nombre: this.registerModel.nombre,
+      identificacion: this.registerModel.identificacion,
+      codigotipoidentificacion: this.registerModel.codigotipoidentificacion,
+      codigoestadocolaborador: this.registerModel.codigoestadocolaborador,
+      codigotipocolaborador: this.registerModel.codigotipocolaborador,
+      codigosede: this.registerModel.codigosede,
       correo: this.registerModel.correo,
       password: this.registerModel.password,
     };
-    
-    console.log(this.registerModel.nombre);
-    console.log(this.registerModel.identificacion);
-    console.log(this.registerModel.codigotipoidentificacion);
-    
-    this.authService.register(formData)
-      .subscribe(response => {
-        console.log('Registro exitoso', response);
-      });
 
-    
+    this.authService.register(formData).subscribe((response) => {
+      console.log('Registro exitoso', response);
+    });
   }
-
-
 }
-
-
-
-
