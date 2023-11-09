@@ -8,57 +8,58 @@
   <title>Register</title>
 </head>
 <body>
-  <section class="form-logup">
-    <h4>Log Up</h4>
-    <label for="nombre">Nombre</label>
-    <input class="controls" type="text" name="nombres" id="nombre" placeholder="">
-    <label for="identificacion">Identificacion</label>
-    <input class="controls" type="identificacion" name="identificacion" id="identificacion" placeholder="">
-
-    <label for="miLista">Tipo de identificacion:</label>
-    <select id="miLista">
-        <option value="opcion0" disabled selected>Selecciona una opción</option>
-        <option value="1">Cedula de ciudadania</option>
-        <option value="2">Tarjeta de identidad</option>
-        <option value="3">Pasaporte</option>
-    </select>
-
-    <label for="miLista">Estado colaborador</label>
-    <select id="miLista">
-        <option value="opcion0" disabled selected>Selecciona una opción</option>
-        <option value="opcion1">Contratado</option>
-        <option value="opcion1">Despedido</option>
+    <section class="form-logup">
+      <h4>Log Up</h4>
+      <form (submit)="submitForm($event)">
+        <label for="nombre">Nombre</label>
+        <input class="controls" type="text" name="nombre" [(ngModel)]="registerModel.nombre" id="nombre" placeholder="">
+        <label for="identificacion">Identificacion</label>
+        <input class="controls" type="text" name="identificacion" [(ngModel)]="registerModel.identificacion" id="identificacion" placeholder="">
+  
+        <label for="tipoIdentificacion">Tipo de identificación:</label>
+        <select id="tipoIdentificacion" name="codigotipoidentificacion" [(ngModel)]="registerModel.codigotipoidentificacion">
+          <option value="0" disabled>Seleccione una opción</option>
+          <option value="1">Cedula de ciudadanía</option>
+          <option value="2">Tarjeta de identidad</option>
+          <option value="3">Pasaporte</option>
+        </select>
 
 
-    </select>
+        <label for="estadoColaborador">Estado colaborador</label>
+        <select id="estadoColaborador" name="codigoestadocolaborador">
+          <option value="1">Contratado</option>
+          <option value="2">Despedido</option>
+        </select>
+  
+        <label for="tipoColaborador">Tipo de colaborador:</label>
+        <select id="tipoColaborador" name="codigotipocolaborador">
+          <option value="1">carpintero</option>
+          <option value="2">vendedor</option>
+          <option value="3">administrador</option>
+        </select>
+  
+        <label for="sede">Sede:</label>
+        <select id="sede" name="codigosede">
+          <option value="1">Sede Rionegro</option>
+          <option value="2">Sede Carmen</option>
+          <option value="3">Sede Santuario</option>
+        </select>
+  
+        <label for="correo">Correo</label>
+        <input class="controls" type="email" name="correo" id="correo" placeholder="">
 
-    <label for="miLista">Tipo de colaborador:</label>
-    <select id="miLista">
-        <option value="opcion0" disabled selected>Selecciona una opción</option>
-        <option value="opcion1">carpintero</option>
-        <option value="opcion2">vendedor</option>
-        <option value="opcion3">administrador</option>
-    </select>
+        <label for="contraseña">Password</label>
+        <input class="controls" type="password" name="password" id="contraseña" placeholder="">
 
-    <label for="miLista">Sede:</label>
-    <select id="miLista">
-        <option value="opcion0" disabled selected>Selecciona una opción</option>
-        <option value="opcion1">Sede Rionegro</option>
-        <option value="opcion2">Sede Carmen</option>
-        <option value="opcion3">Sede Santuario</option>
-    </select>
+        <p>Estoy de acuerdo con <a href="#">Términos y Condiciones</a></p>
 
-
-    <label for="correo">correo</label>
-    <input class="controls" type="email" name="correo" id="correo" placeholder="">
-    <label for="contraseña">Password</label>
-    <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="">
-    <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
-    <input class="buttons" type="submit" value="Registrar">
-    <p><a [routerLink]="['/login']">¿Ya tengo Cuenta?</a></p>
-</section>
-
-</body>
+        <input class="buttons" type="submit" value="Registrar">
+        
+        <p><a [routerLink]="['/login']">¿Ya tengo Cuenta?</a></p>
+      </form>
+    </section>
+  
+  </body>
 </html>
 
 

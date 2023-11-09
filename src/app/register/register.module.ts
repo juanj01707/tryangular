@@ -11,7 +11,7 @@ const ADMIN_ROUTES: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class RegisterModule { }
