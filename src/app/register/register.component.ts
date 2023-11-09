@@ -9,7 +9,7 @@ import { Codigoempresa } from './model/codigoempresa';
 import { Codigociudad } from './model/codigociudad';
 import { Codigodepartamento } from './model/codigodepartamento';
 import { Codigopais } from './model/codigopais';
-
+import { Router } from '@angular/router'; 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -19,6 +19,7 @@ import { Codigopais } from './model/codigopais';
 export class RegisterComponent {
 
   registerModel: Register = new Register();
+  registerSuccessMessage: string = '';
 
   // Agrega propiedades para los elementos select
   tipoIdentificacionOptions: any[] = [
@@ -45,7 +46,7 @@ export class RegisterComponent {
     { value: 3, label: 'Sede Santuario' },
   ];
 
-  constructor(private authService: RegisterService) {
+  constructor(private authService: RegisterService, private router: Router) {
     // Inicializa las propiedades del modelo con valores predeterminados
     this.registerModel.codigotipoidentificacion = {
       codigotipoidentificacion: 0,
@@ -100,6 +101,15 @@ export class RegisterComponent {
 
     this.authService.register(formData).subscribe((response) => {
       console.log('Registro exitoso', response);
+      // Establece el mensaje de registro exitoso
+    this.registerSuccessMessage = 'Registro exitoso. Inicia sesión ahora.';
+
+    // Redirige al usuario a la página de inicio de sesión después de un retraso
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 2000); // Redirige después de 2 segundos
+
+
     });
   }
 }

@@ -89,3 +89,27 @@ body{
 .form-logup a:hover{
   text-decoration: underline;
 }
+
+
+select {
+  width: 100%;
+  border: 1px solid #017bab;
+  margin-bottom: 15px;
+  padding: 11px 10px;
+  background: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.success-message {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 1.5;
+}

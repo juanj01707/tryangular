@@ -3,6 +3,7 @@ import { Router } from '@angular/router'; // Import the Router
 import { LoginService } from '../service/login.service';
 import { Login } from './model/login';
 import { getCookie, setCookie } from 'typescript-cookie';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { getCookie, setCookie } from 'typescript-cookie';
 
 export class LoginComponent {
   loginModel: Login = new Login();
-  loginMessageSuccess: string = '';
+  loginSuccessMessage: string = '';
 
   constructor(private authService: LoginService, private router: Router) {} // Inject the Router
 
@@ -23,12 +24,19 @@ export class LoginComponent {
       (response: any) => {
         const token = response.body.token;
         setCookie('token', token, { expires: 7 });
-        this.loginMessageSuccess = '¡Inicio de sesión exitoso!';
-        this.router.navigate(['/inventario']); // Now the router is accessible
+        this.loginSuccessMessage = 'Inicio de sesión exitoso.';
+        timer(3000).subscribe(() => {
+          this.loginSuccessMessage = ''; // Borra el mensaje después de 2 segundos
+          this.router.navigate(['/inventario']);
+        });
+        
+        
       },
-      (error) => {
+      (error) => {  
         // Handle error
       }
     );
+    
   }
+  
 }
