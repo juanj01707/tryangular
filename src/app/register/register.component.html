@@ -16,6 +16,7 @@
         <label for="identificacion">Identificacion</label>
         <input class="controls" type="text" name="identificacion" [(ngModel)]="registerModel.identificacion" id="identificacion" placeholder="">
   
+        <label for="tipoIdentificacion">Tipo identificacion</label>
         <select id="tipoIdentificacion" name="codigotipoidentificacion" [(ngModel)]="registerModel.codigotipoidentificacion.codigotipoidentificacion">
           <option value="0" disabled>Seleccione una opción</option>
           <option value="1">Cedula de ciudadanía</option>
@@ -50,12 +51,16 @@
         <label for="contraseña">Password</label>
         <input class="controls" type="password" name="password" [(ngModel)]="registerModel.password" id="contraseña" placeholder="">
 
-        <p>Estoy de acuerdo con <a href="#">Términos y Condiciones</a></p>
+        
 
         <input class="buttons" type="submit" value="Registrar">
         
         <p><a [routerLink]="['/login']">¿Ya tengo Cuenta?</a></p>
       </form>
+      <div *ngIf="registerSuccessMessage" class="success-message">
+        {{ registerSuccessMessage }}
+      </div>
+
     </section>
   
   </body>
