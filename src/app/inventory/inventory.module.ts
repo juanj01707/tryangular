@@ -15,4 +15,6 @@ const ADMIN_ROUTES: Routes = [
     CommonModule
   ]
 })
-export class InventoryModule { }
+export class InventoryModule {
+
+ }

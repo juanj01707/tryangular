@@ -3,3 +3,4 @@ export class Inventory{
     nombre!: string;
     codigoSede!: string;
 }
+
