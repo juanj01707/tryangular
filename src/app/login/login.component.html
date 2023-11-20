@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="./login.component.css">
+</head>
+<body>
+  <section class="form-login">
+    <h5>Log In</h5>
+    <form>
+      <input class="controls" type="text" name="correo" [(ngModel)]="loginModel.correo" placeholder="Correo">
+      <input class="controls" type="password" name="password" [(ngModel)]="loginModel.password" placeholder="Contraseña">
+      <input class="buttons" type="button" value="Ingresar" (click)="ingresar()" >
+
+    </form>
+    <div *ngIf="loginSuccessMessage" class="success-message">
+      {{ loginSuccessMessage }}
+    </div>
+
+    <p><a [routerLink]="['/register']">Registrar</a></p>
+
+  </section>
+</body>
+</html>

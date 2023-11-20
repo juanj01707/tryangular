@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/src/app/register/register.component.css">
+  <script src="/src/app/register/register.component.ts"></script>
+  <title>Register</title>
+</head>
+<body>
+    <section class="form-logup">
+      <h4>Log Up</h4>
+      <form (submit)="submitForm($event)">
+        <label for="nombre">Nombre</label>
+
+        <input class="controls" type="text" name="nombre" [(ngModel)]="registerModel.nombre" id="nombre" placeholder="">
+        <label for="identificacion">Identificacion</label>
+        <input class="controls" type="text" name="identificacion" [(ngModel)]="registerModel.identificacion" id="identificacion" placeholder="">
+
+        <label for="tipoIdentificacion">Tipo identificacion</label>
+        <select id="tipoIdentificacion" name="codigotipoidentificacion" [(ngModel)]="registerModel.codigotipoidentificacion.codigotipoidentificacion">
+          <option value="0" disabled>Seleccione una opción</option>
+          <option value="1">Cedula de ciudadanía</option>
+          <option value="2">Tarjeta de identidad</option>
+          <option value="3">Pasaporte</option>
+        </select>
+
+
+        <label for="estadoColaborador">Estado colaborador</label>
+        <select id="estadoColaborador" name="codigoestadocolaborador" [(ngModel)]="registerModel.codigoestadocolaborador.codigoestadocolaborador">
+          <option value="0" disabled>Seleccione una opción</option>
+          <option value="1">Contratado</option>
+          <option value="2">Despedido</option>
+        </select>
+
+        <label for="tipoColaborador">Tipo de colaborador:</label>
+        <select id="tipoColaborador" name="codigotipocolaborador" [(ngModel)]="registerModel.codigotipocolaborador.codigotipocolaborador">
+          <option value="0" disabled>Seleccione una opción</option>
+          <option value="1">carpintero</option>
+          <option value="2">vendedor</option>
+          <option value="3">administrador</option>
+        </select>
+
+        <label for="sede">Sede:</label>
+        <select id="sede" name="codigosede" [(ngModel)]="registerModel.codigosede.codigosede">
+          <option value="0" disabled>Seleccione una opción</option>
+          <option value="1">Sede Rionegro</option>
+          <option value="2">Sede Carmen</option>
+          <option value="3">Sede Santuario</option>
+        </select>
+
+        <label for="correo">Correo</label>
+        <input class="controls" type="email" name="correo" [(ngModel)]="registerModel.correo" id="correo" placeholder="">
+
+        <label for="contraseña">Password</label>
+        <input class="controls" type="password" name="password" [(ngModel)]="registerModel.password" id="contraseña" placeholder="">
+
+
+
+        <input class="buttons" type="submit" value="Registrar">
+
+        <p><a [routerLink]="['/login']">¿Ya tengo Cuenta?</a></p>
+      </form>
+      <div *ngIf="registerSuccessMessage" class="success-message">
+        {{ registerSuccessMessage }}
+      </div>
+
+    </section>
+
+  </body>
+</html>
+
+
+
