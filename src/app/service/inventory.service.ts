@@ -1,40 +1,43 @@
 import { Injectable } from '@angular/core';
-import {environment } from 'src/environments/environment';
-import {HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Inventory } from '../inventory/model/inventory';
-
-const inventorUrl = environment.inventory;
+import { getCookie } from '../cookie/cookie-utils';
+import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
+const inventoryUrl = environment.inventory;
  
 @Injectable({
   providedIn: 'root'
 })
+
 export class InventoryService {
 
   constructor(private http: HttpClient) { }
-  public getInventory(documentType: string, documentNumber: string): Observable<Object> {
+  private getHeaders(): HttpHeaders {
+  const token = getCookie('token');
+  console.log('Token:', token);
 
-      let params = {
-          "documentType": documentType,
-          "documentNumber": documentNumber,
-      };
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
+    'Accept': '*/*'
+  });
 
-      return this.http.get(`${inventorUrl}`, { params, observe: 'response' });
+  return headers;
+  }
+
+  public getInventory(): Observable<Object> {
+    const headers = this.getHeaders();
+    return this.http.get<Inventory[]>(inventoryUrl, { headers });
   }
 
   
   public saveInventory(client: Inventory): Observable<Object> {
 
-    // para usar el token generado en login y poder consumir la api
-    //hay que mandar el header con el getCookies
-    //busque en google http client add header angular
-    /*
-     let headers = new HttpHeaders();
-     headers = headers.set('Content-Type', aqui poner el getCokkie; charset=utf-8');
-
-    */
-    return this.http.post(`${inventorUrl}`, client, { observe: 'response' });
-
+    return this.http.post(`${inventoryUrl}`, client, { observe: 'response' });
 }
+
+
 
 }

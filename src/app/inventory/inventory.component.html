@@ -4,127 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventory</title>
-  <link rel="stylesheet" href="/src/app/inventory/inventory.component.css">
-  <script src="https://kit.fontawesome.com/42c022c0d0.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="inventory.component.css">
 </head>
 <body>
 
-  <nav class="sidebar close">
+  <nav class="sidebar"[class.close]="isCollapsed">
     <header>
       <div class="text logo">
-        <Span class="name">Manage Wood</Span>
+        <span class="name">Manage Wood</span>
         <span class="profe"></span>
       </div>
-      <i class="fa-solid fa-bars"></i>
+      <i class="fas fa-bars toggle-btn"></i>
     </header>
 
     <div class="menu_bar">
       <div class="menu">
-        <li class="search_box">
-          <i class="fa-solid fa-magnifying-glass icon"></i>
-          <input type="text" placeholder="Buscar....">
-        </li>
-
+        
         <ul class="menu_links">
-
           <li class="nav_link">
-            <a href="#">
-                  <i class="fas fa-home icon" title="Inicio"></i>
-                  <span class="text nav text">Inicio</span>
+            <a href="javascript:void(0)" (click)="toggleCollapse('inicio')" [class.active]="activeButton === 'inicio'">
+              <i class="fas fa-home icon" title="Inicio"></i>
+              <span class="text nav-text">Inicio</span>
             </a>
           </li>
-
           <li class="nav_link">
-            <a href="#">
-                  <i class="fa-solid fa-tag icon" title="Cotizaciones"></i>
-                  <span class="text nav text">Cotizaciones</span>
+            <a href="javascript:void(0)" (click)="toggleCollapse('inventario')" [class.active]="activeButton === 'inventario'">
+              <i class="fas fa-cubes icon" title="inventario"></i>
+              <span class="text nav-text">Inventario</span>
             </a>
           </li>
-
           <li class="nav_link">
-            <a href="#">
-                  <i class="fa-solid fa-cubes icon" title="Inventario"></i>
-                  <span class="text nav text">Inventario</span>
+            <a href="javascript:void(0)" (click)="toggleCollapse('colaboradores')" [class.active]="activeButton === 'colaboradores'">
+              <i class="fas fa-users icon" title="Colaboradores"></i>
+              <span class="text nav-text">Colaboradores</span>
             </a>
           </li>
-
-          <li class="nav_link icon">
-            <a href="#">
-              <i class="far fa-sticky-note icon" title="Empleados"></i>
-                  <span class="text nav text">Empleados</span>
-            </a>
-          </li>
-
-          <li class="nav_link">
-            <a href="#">
-                  <i class="fa-solid fa-people-roof icon" title="Clientes"></i>
-                  <span class="text nav text">Clientes</span>
-            </a>
-          </li>
-
-          <li class="nav_link">
-            <a href="#">
-              <i class="fa-solid fa-hand-holding-dollar icon" title="Nominas"></i>
-                  <span class="text nav text">Nominas</span>
-            </a>
-          </li>
-
-          <li class="nav_link">
-            <a href="#">
-              <i class="fa-solid fa-file-invoice icon" title="Ventas"></i>
-                  <span class="text nav text">Ventas</span>
-            </a>
-          </li>
-
-          <li class="nav_link">
-            <a href="#">
-              <i class="fa-solid fa-truck icon" title="Prooveedores"></i>
-                  <span class="text nav text">Prooveedores</span>
-            </a>
-          </li>
-
-          <li class="nav_link">
-            <a href="#">
-              <i class="far fa-address-card icon" title="Gastos"></i>
-                  <span class="text nav text">Gastos</span>
-            </a>
-          </li>
-
         </ul>
-
       </div>
-      <div class="botton_content">
+
+      <div class="bottom_content">
         <li class="">
-          <a href="#">
-            <i class="fa-solid fa-right-from-bracket icon"></i>
+          <a href="javascript:void(0)" (click)="logout()">
+            <i class="fas fa-sign-out-alt icon"></i>
             <span class="text nav_text">Salir</span>
           </a>
         </li>
-
-        <li class="mode">
-          <div class="sun_moon">
-            <i class="fa-solid fa-moon icon moon"></i>
-            <i class="fa-solid fa-sun icon sun"></i>
-          </div>
-          <span class="mode_text text">Modo oscuro</span>
-          <div class="toggle_switch">
-            <span class="switch"></span>
-          </div>
-        </li>
-
       </div>
+
+      
     </div>
   </nav>
 
-  <section class="home">
-    <div class="text">
-      Inventario
+  <section class="content">
+    <div class="text" *ngIf="currentContent === 'inicio'">
+      Contenido de Inicio
+    </div>
+  
+    <div id="inventarioContent" *ngIf="currentContent === 'inventario'">
+      Contenido de Inventario
+    </div>
+  
+    <div id="colaboradoresContent" *ngIf="currentContent === 'colaboradores'">
+      Lista de Colaboradores
     </div>
   </section>
 
+  <script src="inventory.component.ts"></script>
 
-
-
-<script src="inventory.component.ts"></script>
 </body>
 </html>
