@@ -6,7 +6,12 @@
 
 body{
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url("/fd.png");
+  background-image: url("/assets/imagen2.jpg");
+  background-position: all;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  height: 100svb;
 }
 
 .form-logup{
@@ -14,13 +19,22 @@ body{
   height: auto;
   background: #636161;
   margin: auto;
-  margin-top: 80px;
-  box-shadow: 10px 15px 37px #000;
+  margin-top: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 7px 13px 37px #000;
   padding: 20px 30px;
-  border-top: 6px solid #017bab;
+  border-top: 4px solid #017bab;
   color: white;
-
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
 }
+
 
 .form-logup h4 {
   margin: 0;
@@ -50,7 +64,11 @@ body{
   background: white;
   font-size: 14px;
   font-weight: bold;
-
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
 }
 
 #miLista{
@@ -62,6 +80,11 @@ body{
   background: white;
   font-size: 14px;
   font-weight: bold;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
 }
 
 .buttons {
@@ -71,7 +94,16 @@ body{
   border: none;
   color: white;
   margin-bottom: 14px;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+}
 
+.buttons:hover{
+  background-color: #00b7ff ;
+  border: 2px solid #017bab;
 }
 
 .form-logup p {
@@ -99,6 +131,11 @@ select {
   background: white;
   font-size: 14px;
   font-weight: bold;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
 }
 
 .success-message {
@@ -112,4 +149,10 @@ select {
   border-radius: 5px;
   font-size: 18px;
   line-height: 1.5;
+}
+
+.form-logup label{
+  text-align: center;
+  margin: 6px;
+
 }
