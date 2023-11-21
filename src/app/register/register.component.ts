@@ -9,7 +9,7 @@ import { Codigoempresa } from './model/codigoempresa';
 import { Codigociudad } from './model/codigociudad';
 import { Codigodepartamento } from './model/codigodepartamento';
 import { Codigopais } from './model/codigopais';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -30,17 +30,20 @@ export class RegisterComponent {
   ];
 
   estadoColaboradorOptions: any[] = [
+    { value: 0, label: 'Seleccione una opción' },
     { value: 1, label: 'Contratado' },
     { value: 2, label: 'Despedido' },
   ];
 
   tipoColaboradorOptions: any[] = [
+    { value: 0, label: 'Seleccione una opción' },
     { value: 1, label: 'carpintero' },
     { value: 2, label: 'vendedor' },
     { value: 3, label: 'administrador' },
   ];
 
   sedeOptions: any[] = [
+    { value: 0, label: 'Seleccione una opción' },
     { value: 1, label: 'Sede Rionegro' },
     { value: 2, label: 'Sede Carmen' },
     { value: 3, label: 'Sede Santuario' },
