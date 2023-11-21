@@ -1,60 +1,54 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Inventory } from './model/inventory';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { InventoryService } from '../service/inventory.service';
+import { Inventory } from '../inventory/model/inventory'; // Importa el modelo Inventory
+import { Observable } from 'rxjs';
+import { getCookie, setCookie } from 'typescript-cookie';
 
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.css']
 })
-
-export class InventoryComponent implements OnInit, AfterViewInit {
+export class InventoryComponent implements OnInit {
   public title = 'Inventory Management';
   public isCollapsed = false;
-  submitted = false;
-  dataInventory!: Inventory;
-  inventoryForm!: FormGroup;
+  public currentContent = 'inicio'; 
+  public activeButton = 'inicio'; 
 
-  constructor(private formBuilder: FormBuilder, private inventoryService: InventoryService) { }
+  constructor(private inventoryService: InventoryService  
+    ) {}
 
-  ngOnInit() {
-    this.dataInventory = new Inventory();
-    this.inventoryForm = this.formBuilder.group({
-      codigoInventario: ['', Validators.required],
-      nombre: ['', Validators.required],
-      codigoSede: ['', Validators.required],
-    });
-  }
+  ngOnInit() {}
 
-  ngAfterViewInit() {
-    // Add event listeners after the view has been initialized
-    const body = document.querySelector('body');
-    const sidebar = document.querySelector('nav');
-    const toggle = document.querySelector('.toggle');
-    const searchBtn = document.querySelector('.search_box');
-    const modeSwitch = document.querySelector('.toggle_switch');
-    const modeText = document.querySelector('.mode_text');
-
-    if (body && sidebar && toggle && searchBtn && modeSwitch && modeText) {
-      toggle.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-      });
-
-      searchBtn.addEventListener("click", () => {
-        sidebar.classList.remove("close");
-      });
-
-      modeSwitch.addEventListener("click", () => {
-        body.classList.toggle("dark");
-        if (body.classList.contains("dark")) {
-          modeText.textContent = "Light mode";
-        } else {
-          modeText.textContent = "Dark Mode";
+  toggleCollapse(content: string) {
+    this.isCollapsed = !this.isCollapsed;
+    this.currentContent = content;
+    this.activeButton = content;
+  
+    if (content === 'inventario') {
+      this.inventoryService.getInventory().subscribe(
+        (response: any) => {
+          const inventoryData: Inventory[] = response.body as Inventory[];
+         
+          console.log('Lista de inventario:', inventoryData);
+        },
+        (error: HttpErrorResponse) => {
+          
+          console.error('Error al obtener la lista de inventario:', error);
         }
-      });
+      );
     }
-  }
 
-  get f() { return this.inventoryForm.controls; }
+
+    
+
+  }
+  logout() {
+    
+    setCookie('token', '', { expires: new Date(0) }); 
+    
+    window.location.href = 'login';
+  }
+  
 }

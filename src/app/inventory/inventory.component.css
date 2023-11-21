@@ -1,308 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
-
-*{
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family:'Work Sans', sans-serif;
 }
 
-:root{
-
-  --body-color:#9B27B00D;
-  --sidebar-color: #FFFFFF ;
-  --primary-color: #9C27B0;
-  --primary-color-light: #9B27B00D;
-  --toggle-color: #DDDDDD;
-  --text-color: #707070;
-
-  --tran-03: all 0.2s ease;
-  --tran-04: all 0.3s ease;
-  --tran-05: all 0.4s ease;
-}
-
-body{
-  min-height: 100vh;
-  background-color: var(--body-color);
-  transition: var(--tran-05);
-}
-
-::selection{
-  background-color: var(--primary-color);
-  color: var(--sidebar-color);
-}
-
-body.dark{
-  --body-color: #18191A;
-  --sidebar-color:#242526;
-  --primary-color-light: #3A3B3C;
-  --toggle-color: #FFFFFF;
-  --text-color: #CCCCCC;
-}
-
-.sidebar{
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background: #3498db; /* Color azul */
   position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 250PX;
-  padding: 10PX 14PX;
-  background: var(--sidebar-color);
-  transition: var(--tran-05);
-  z-index: 100;
+  transition: 0.5s;
 }
 
-.sidebar.close {
-  width: 88px;
-}
-
-.sidebar li{
-  height: 50px;
-  list-style: none;
+.sidebar header {
+  padding: 15px 10px;
   display: flex;
   align-items: center;
-  margin-top: 10px;
-}
-.sidebar
-
-.sidebar header .image,
-.sidebar .icon {
-  min-width: 60px;
-  border-radius: 6px;
+  justify-content: space-between;
+  color: white;
+  background-color: #3498db; /* Fondo del encabezado */
 }
 
-.sidebar .icon{
-  min-width: 60px;
-  border-radius: 6px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
-
-.sidebar .text,
-.sidebar .icon{
-  color: var(--text-color);
-  transition: var(--tran-03);
-}
-
-.sidebar .text{
-  font-size: 17px;
-  font-weight: 500;
-  white-space: nowrap;
-  opacity: 1;
-}
-
-.sidebar.close .text {
-  opacity: 0;
-}
-
-.sidebar header{
-  position: relative;
-}
-
-.sidebar header .logo {
+.text.logo {
   display: flex;
   flex-direction: column;
-}
-
-.name{
-  margin-top: 2px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.profe{
-  font-size: 16px;
-  margin-top: -2px;
-  display: block;
-}
-
-.sidebar header .image {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  color: white;
 }
 
-.sidebar header .image img{
-  width: 40px;
-  border-radius: 6px;
+.text.logo .name {
+  font-size: 1.5rem; /* Tamaño de fuente para el nombre */
+  font-family: 'Arial', sans-serif; /* Tipo de fuente */
+  margin-bottom: 5px; /* Espaciado inferior */
 }
 
-.sidebar header .fa-bars{
-  position: absolute;
-  top: 20%;
-  right: 0px;
-  height: 35px;
-  width: 35px;
-  background-color: var(--primary-color);
-  color: var(--sidebar-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
+.text.logo .profe {
+  /* Estilos adicionales para el elemento .profe si es necesario */
+}
+
+.toggle-btn {
+  font-size: 1.5rem; /* Tamaño de fuente del icono */
+  color: white; /* Color del icono */
   cursor: pointer;
-  transition: var(--tran-05);
 }
 
-body.dark .sidebar header .fa-bars{
-  color: var(--text-color);
+.menu_bar {
+  padding: 20px;
 }
 
-.sidebar.close .fa-bars{
-  width: 100%;
-  top: 20px;
-}
-
-.sidebar .menu{
-  margin-top: 40px;
-}
-
-.sidebar li.search_box{
-  border-radius: 6px;
-  background-color: var(--primary-color-light);
-  cursor: pointer;
-  transition: var(--tran-05);
-}
-
-.sidebar li.search_box input{
-  height: 100%;
-  width: 100%;
-  outline: none;
-  border: none;
-  background-color: var(--primary-color-light);
-  color: var(--text-color);
-  border-radius: 6px;
-  font-size: 17px;
-  font-weight: 500;
-  transition: var(--tran-05);
-}
-
-.sidebar li a {
+.menu_links {
   list-style: none;
-  height: 100%;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  border-radius: 6px;
+  padding: 0;
+}
+
+.nav_link a {
   text-decoration: none;
-  transition: var(--tran-03);
-}
-
-.sidebar li a:hover {
-  background-color: var(--primary-color);
-}
-
-.sidebar li a:hover .icon,
-.sidebar li a:hover .text{
-  color: var(--sidebar-color);
-}
-
-.sidebar .menu_bar{
-  height: calc(100% - 55px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  overflow-y: scroll;
-}
-
-.menu_bar::-webkit-scrollbar{
-  display: none;
-}
-
-.sidebar .menu_bar .mode {
-  border-radius: 6px;
-  background-color: var(--primary-color-light);
-  position: relative;
-  transition: var(--tran-05);
-}
-
-.menu_bar .mode .sun_moon {
-  height: 50px;
-  width: 60px;
-}
-
-.mode .sun_moon i {
-  position: absolute;
-}
-
-.mode .sun_moon i.sun {
-  opacity: 0;
-}
-
-body.dark .mode .sun_moon i.sun{
-  opacity: 1;
-}
-
-body.dark .mode .sun_moon i.moon {
-  opacity: 0;
-}
-
-.menu_bar .botton_content .toggle_switch {
-  position: absolute;
-  right: 0;
-  height: 100%;
-  min-width: 60px;
+  color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 10px 0;
 }
 
-.toggle_switch .switch {
-  position: relative;
-  height: 22px;
-  width: 40px;
-  border-radius: 25px;
-  background-color: var(--toggle-color);
-  transition: var(--tran-05);
+.nav_link a:hover {
+  background: #2980b9; /* Color azul más oscuro al pasar el mouse */
 }
 
-.switch::before {
-  content: '';
-  position: relative;
-  height: 15px;
-  width: 15px;
-  border-radius: 50%;
-  top: 50%;
-  left: 5px;
-  transform: translateY(-50%);
-  background-color: var(--sidebar-color);
-  transition: var(--tran-04);
+.icon {
+  margin-right: 10px;
 }
 
-body.dark .switch::before {
-  left: 20px;
-}
-
-.home{
+.bottom_content {
   position: absolute;
-  top: 0;
-  left: 250px;
-  height: 100vh;
-  width: calc(100% - 250px);
-  background-color: var(--body-color);
-  transition: var(--tran-05);
+  bottom: 20px;
+  width: 100%;
 }
 
-.home .text{
-  font-size: 30px;
-  font-weight: 500;
-  color: var(--text-color);
-  padding: 12px 60px;
+.content {
+  margin-left: 250px;
+  padding: 15px;
+  transition: margin-left 0.5s;
 }
 
-.sidebar.close ~ .home {
-  left: 78px;
-  height: 100vh;
-  width: calc(100% - 78px);
+.text {
+  color: #2c3e50; /* Color de texto oscuro */
 }
 
-body.dark .home .text {
-  color: var(--text-color);
+/* Agrega estilos de resaltado al botón activo */
+.menu_links .nav_link a.active {
+  background-color: #2980b9; /* Puedes ajustar el color según tus preferencias */
+  color: white;
+}
 
+@media screen and (max-width: 600px) {
+  .sidebar {
+    width: 0;
+  }
+  .content {
+    margin-left: 0;
+  }
+  .sidebar.close {
+    display: none;
+  }
 }
